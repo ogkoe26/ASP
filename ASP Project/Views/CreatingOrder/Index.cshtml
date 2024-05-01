@@ -1,0 +1,43 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model ASP_Project.Data.Models.CreatingOrder;
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>Магазин квітів</title>
+</head>
+<body>
+    <form method="post" action="/CreatingOrder/Create">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputFirstName">Ім'я</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="Введіть ім'я" name="FirstName" value="@Model?.FirstName">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputLastName">Прізвище</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="Введіть прізвище" name="LastName" value="@Model?.LastName">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Адреса</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Введіть адресу" name="Address" value="@Model?.Address">
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPhoneNumber">Номер телефону</label>
+                <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="+38050..." name="Phone" value="@Model?.Phone">
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Оформити замовлення</button>
+    </form>
+    <script src="~/js/bootstrap.min.js"></script>
+</body>

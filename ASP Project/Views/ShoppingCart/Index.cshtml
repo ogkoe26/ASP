@@ -1,0 +1,30 @@
+﻿@model ASP_Project.Data.Models.ShoppingCart;
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>Магазин квітів</title>
+</head>
+<body>
+    <h1 class="header__site">Магазин квітів</h1>
+    <h2 style="margin-left: 100px;">Загальна сума становить: @Model.TotalPrice₴</h2>
+    <a style="margin-left: 100px; height: 40px; width: 206px; font-size: 20px; border-radius: 12px; color: #ffffff; background: #60B1EB; display: flex; align-items: center; justify-content: center; " href="@Url.Action("Index", "CreatingOrder")">Зробити замовлення</a>
+    <div class="container" href="#Main">
+        <div class="row mt-4">
+            <div style="width: 100%; display: flex; gap: 15px; flex-wrap: wrap; justify-content: start;">
+                @foreach (var flower in Model.Items)
+                {
+                    <div class="card__buy">
+                        <img src="@flower.Flower.img" class="card-img-top mt-3" alt="Квітка 1">
+                        <h5 class="name__buy">Колір: @flower.Flower.Color</h5>
+                        <div class="sepe"></div>
+                        <p class="price__buy">Ціна: @flower.Flower.Price₴</p>
+                        <p class="description__buy">Опис: @flower.Flower.Description</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="./js/bootstrap.min.js"></script>
+</body>

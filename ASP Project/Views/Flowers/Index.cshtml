@@ -1,0 +1,45 @@
+﻿@using ASP_Project.Data.Models;
+@model List<Flower>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>Магазин квітів</title>
+</head>
+
+<body>
+    <h1 class="header__site">Магазин квітів</h1>
+    <ul class="nav nav-pills nav__site">
+        <li class="nav-item">
+            <a class="nav-link active" href="#Main">Головне меню</a>
+        </li>
+        <li class="nav-item" href="#">
+            <a class="nav-link" href="#">Рози</a>
+        </li>
+        <li class="nav-item" href="#">
+            <a class="nav-link" href="#">Тюльпани</a>
+        </li>
+        <li class="nav-item" href="#">
+            <a class="nav-link" href="#">Лілії</a>
+        </li>
+    </ul>
+
+    <div class="container" href="#Main">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../wwwroot/icon/mainroze.jpg" class="card-img-top mt-3" alt="Квітка 1">
+                    <div class="card-body">
+                        <h5 class="card-title mt-1">Рози</h5>
+                        <div class="sep"></div>
+                        <p class="card-text mt-1">Ціни: від 500 - до 5000₴</p>
+                        <p class="card-text mt-1">Доставка: 1-2 дні</p>
+                    </div>
+                    <a href="#notmain" class="btn">Обрати</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/bootstrap.min.js"></script>
+</body>

@@ -1,0 +1,34 @@
+﻿@using ASP_Project.Data.Models;
+@model List<Category>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>Магазин квітів</title>
+</head>
+
+<body>
+    <h1 class="header__site">Магазин квітів</h1>
+
+    <div class="container" href="#Main">
+        <div class="row mt-4">
+            <div style="width: 100%; display: flex; flex-wrap: wrap; gap: 15px">
+                @foreach (var category in Model)
+                 {
+                    <div class="card">
+                        <img src="@category.img" class="card-img-top mt-3" alt="Квітка 1">
+                        <div class="card-body">
+                            <h5 class="card-title mt-1">@category.Name</h5>
+                            <div class="sep"></div>
+                            <p class="card-text mt-1">Ціни: від @category.minPrice - до @category.maxPrice₴</p>
+                            <p class="card-text mt-1">Доставка: 1-2 дні</p>
+                        </div>
+                        <a href="@Url.Action("GetByCategory","Flowers",new { id = category.Id})" class="btn">Обрати</a>
+                    </div>
+                 }
+            </div>
+        </div>
+    </div>
+    <script src="./js/bootstrap.min.js"></script>
+</body>

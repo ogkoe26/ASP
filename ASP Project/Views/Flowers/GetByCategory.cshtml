@@ -1,0 +1,57 @@
+﻿@using ASP_Project.Data.Models;
+@model IEnumerable<Flower>
+@{
+    var category = ViewData["Category"] as Category;
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>Магазин квітів</title>
+</head>
+
+<body>
+    <h1 class="header__site">Магазин квітів</h1>
+    <ul class="nav nav-pills nav__site" style="display: flex;">
+        <li class="headerli" style="list-style-type: none; color: #2F1452; font-weight: 600; font-size: 22px; line-height: 22px;">
+            <a class="nav-link" href="@Url.Action("Index","Category")" class="btn" style="color: #2F1452; text-decoration: none;">Головне меню</a>
+            <a class="nav-link" href="@Url.Action("Index","ShoppingCart")" class="btn" style="color: #2F1452; text-decoration: none;">Корзина покупок</a>
+        </li>
+        <li class="nav-item" href="#" style="list-style-type: none; color: #2F1452; font-weight: 600; font-size: 22px; line-height: 22px; margin-left: 20px;">
+            Зараз відркрито: @category.Name
+        </li>
+    </ul>
+    <div class="container" href="#Main">
+        <div class="row mt-4">
+            <div class="col-md-4" style="width: 100%; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                @foreach (var flower in Model)
+                {
+                <div class="card__buy">
+                    <img src="@flower.img" class="card-img-top mt-3" alt="Квітка 1">
+                    <h5 class="name__buy">Колір: @flower.Color</h5>
+                    <div class="sepe"></div>
+                    <p class="price__buy">Ціна: @flower.Price₴</p>
+                    <p class="description__buy">Опис: @flower.Description</p>
+                    <button class="buy__flower" onclick="addToShoppingCart('@flower.Id')">Придбати</button>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="./js/bootstrap.min.js"></script>
+    <script>
+        function addToShoppingCart(idFlower) {
+            fetch(`/ShoppingCart/AddToShoppingCart?idFlower=${encodeURIComponent(idFlower)}`, {
+                method: "POST"
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Товар доданий до кошика.")
+                    } else {
+                        alert("Помилка при додаванні товару в кошик.");
+                    }
+                })
+        }
+    </script>
+</body>

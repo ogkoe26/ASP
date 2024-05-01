@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=FlowerShop;User=root;Password=26rs37dk;"
+  }
+}
